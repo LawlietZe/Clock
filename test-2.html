@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+	<title>Simple app</title>
+<script src="http://code.angularjs.org/angular-1.0.1.min.js"></script>	
+<style type="text/css">
+	.warp h1{
+		position: fixed;
+		top: 80%;
+		left: 34%;
+	}
+  .warp h3{
+  	position: fixed;
+  	top: 72%;
+  	left: 40%;
+  	color: grey;
+  }
+  .warp img{
+  	width: 600px; 
+  	height:540px;
+  	margin: 0 auto;
+  	display: block;
+  }
+  body{
+  	margin: 0;
+  	padding: 0;
+  	background-color: #e1dac0;
+  }
+</style>
+</head>
+<body>
+<div ng-controller='MyCtr' class="warp">
+<h3>Time is passing now</h3>
+<h1>{{clock}}</h1>
+<img src="time.png">
+</div>
+<script type="text/javascript">
+	function MyCtr($scope,$timeout){
+			var updateClock = function (){
+				$scope.clock = new Date();
+				$timeout(function(){
+					updateClock();
+				},1000);
+			};
+			updateClock();
+	}
+</script>
+</body>
+</html>
